@@ -4,50 +4,53 @@ var path = require('path');
 var useDefaultConfig = require('@ionic/app-scripts/config/webpack.config.js');
 
 var env = process.env.MY_ENV || process.env.my_env;
-
-if (env === 'prod') {
-  useDefaultConfig.prod.resolve.alias = {
-    "@app/env": path.resolve(environmentPath('prod'))
-  };
+useDefaultConfig.dev.resolve.alias = {
+  "@app/env": path.resolve(environmentPath('dev'))
 }
 
-if (env === 'dev') {
-  useDefaultConfig.dev.resolve.alias = {
-    "@app/env": path.resolve(environmentPath('dev'))
-  };
-}
+// if (env === 'prod') {
+//   useDefaultConfig.prod.resolve.alias = {
+//     "@app/env": path.resolve(environmentPath('prod'))
+//   };
+// }
 
-if (env === 'staging-dev') {
-  useDefaultConfig.dev.resolve.alias = {
-    "@app/env": path.resolve(environmentPath('staging'))
-  };
-}
+// if (env === 'dev') {
+//   useDefaultConfig.dev.resolve.alias = {
+//     "@app/env": path.resolve(environmentPath('dev'))
+//   };
+// }
 
-if (env === 'staging-beta') {
-  useDefaultConfig.prod.resolve.alias = {
-    "@app/env": path.resolve(environmentPath('staging-beta'))
-  };
-}
+// if (env === 'staging-dev') {
+//   useDefaultConfig.dev.resolve.alias = {
+//     "@app/env": path.resolve(environmentPath('staging'))
+//   };
+// }
 
-if (env === 'dev-beta') {
-  useDefaultConfig.prod.resolve.alias = {
-    "@app/env": path.resolve(environmentPath('dev-beta'))
-  };
-}
+// if (env === 'staging-beta') {
+//   useDefaultConfig.prod.resolve.alias = {
+//     "@app/env": path.resolve(environmentPath('staging-beta'))
+//   };
+// }
 
-if (env === 'prod-dev') {
-  useDefaultConfig.dev.resolve.alias = {
-    "@app/env": path.resolve(environmentPath('prod-dev'))
-  };
-}
+// if (env === 'dev-beta') {
+//   useDefaultConfig.prod.resolve.alias = {
+//     "@app/env": path.resolve(environmentPath('dev-beta'))
+//   };
+// }
 
-if (!env) {
-  // Default to dev config
-  useDefaultConfig[env] = useDefaultConfig.dev;
-  useDefaultConfig[env].resolve.alias = {
-    "@app/env": path.resolve(environmentPath(env))
-  };
-}
+// if (env === 'prod-dev') {
+//   useDefaultConfig.dev.resolve.alias = {
+//     "@app/env": path.resolve(environmentPath('prod-dev'))
+//   };
+// }
+
+// if (!env) {
+//   // Default to dev config
+//   useDefaultConfig[env] = useDefaultConfig.dev;
+//   useDefaultConfig[env].resolve.alias = {
+//     "@app/env": path.resolve(environmentPath(env))
+//   };
+// }
 
 function environmentPath(env) {
   var filePath = './src/environments/environment' + (env === 'prod' ? '' : '.' + env) + '.ts';
